@@ -1,9 +1,12 @@
+import 'package:flash_chat/services/auth.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+  const ChatScreen({
+    super.key,
+  });
   static const String id = 'chat_screen';
 
   @override
@@ -11,6 +14,8 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,10 +23,12 @@ class _ChatScreenState extends State<ChatScreen> {
         leading: null,
         actions: <Widget>[
           IconButton(
-              icon: const Icon(Icons.close),
-              onPressed: () {
-                //Implement logout functionality
-              }),
+            icon: const Icon(Icons.close),
+            onPressed: () {
+              _auth.signOut();
+              Navigator.pop(context);
+            },
+          ),
         ],
         title: const Text('⚡Chat'),
         backgroundColor: Colors.lightBlueAccent,
