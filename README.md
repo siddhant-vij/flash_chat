@@ -2,4 +2,4 @@
 
 Practice Flutter Project
 <br>
-Firebase Firestore (DBMS)
+Firebase Authentication
